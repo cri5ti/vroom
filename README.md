@@ -6,6 +6,8 @@ Vroom
 > This project is under development right now, and nothing might work yet.
 > Suggestions and ideas are always welcome though.
 
+----
+
 
 ***Vroom*** wants to be a developing tool for multi-platform HTML5 applications (android, ios, web apps).
 
@@ -21,7 +23,7 @@ Planned features
 
 Only one of the platforms will be enabled at once.
 
-```
+```javascript
 // A version of the application will be built for every platform
 vroom.platforms = ['android', 'ios', 'web', 'chromeapp'];
 
@@ -38,7 +40,7 @@ vroom.development.platforms = {
 
 These rules are evaluated at runtime.
 
-```
+```javascript
 vroom.rules = {
     '2x':   function() { return window.devicePixelRatio == 2; }
 
@@ -55,15 +57,17 @@ vroom.rules = {
 #### Rules and CSS
 
 All rules are automatically mapped to a CSS class with the same name.
-    
-    vroom.classMap = {
-        /* rename selector: 
-           `app` css class is mapped to `chromeapp` rule. */
-        'app': 'chromeapp',   
 
-        /* advanced mapping */
-        'not-web': ':not(.web)' 
-    };
+```javascript
+vroom.classMap = {
+    /* rename selector: 
+       `app` css class is mapped to `chromeapp` rule. */
+    'app': 'chromeapp',   
+
+    /* advanced mapping */
+    'not-web': ':not(.web)' 
+};
+```
 
 
 ### Rule based file overloading and merging.
@@ -143,7 +147,7 @@ $touchEvents-@touch/
 
 CSS loaded on request can be wrapped and prefixed:
 
-```
+```javascript
 var css = requireCSS("todo", {
     wrap: '.view-todos', 
     prefix: 'todo-'
@@ -156,7 +160,7 @@ All the class names will be obfuscated at packaging time. This applies in HTML t
 
 To get renamed class names, use this pattern:
 
-```
+```javascript
 var css = requireCSS("todo");
 $(css('.profile')).addClass(css('active'));
 ```
@@ -232,53 +236,3 @@ Getting started
         > vroom build
 
 
-
-
-
-* * *
-* * *
-* * *
-
-## Url mapping
-```
-features/$app/index.html -> /
-features/$app/style.less -> /style.css
-features/$app/style-@ios.less -> /style.css (merged)
-```
-
-## Packaging
-`> vroom build android ios web web:chromeapp`
-```
-dist\
-    android\
-    ios\
-    web\
-        5499a05a37e57947b87f176f2d5a21df.app.js     - app.js
-        007ccaa83aa7674f1166352c3605b85c.module1.js
-        f9cce95db5c816a935906a713c78aff5.module2.js
-        9cfefed8fb9497baa5cd519d7d2bb5d7.locale.js  - locale
-        82a9e4d26595c87ab6e442391d8c5bba.locale.js  - locale-@fr
-        index.html
-        robots.txt
-        favion.ico
-    web:chromeapp\
-        adbf5a778175ee757c34d0eba4e932bc.app.js     - app-@chromeapp.js
-        007ccaa83aa7674f1166352c3605b85c.module1.js
-        f9cce95db5c816a935906a713c78aff5.module2.js
-        9cfefed8fb9497baa5cd519d7d2bb5d7.locale.js  - locale
-        82a9e4d26595c87ab6e442391d8c5bba.locale.js  - locale-@fr
-        index.html
-        icon-64.png
-        icon-128.png
-
-```
-
-* * *
-# TODO: #
-- url mapping
-
-- feature dependencies
-
-- dynamic rules static packaging?
-    1. generated in a permutation
-    2. css rules
