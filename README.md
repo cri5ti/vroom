@@ -2,14 +2,14 @@
 Vroom
 =====
 
+> **WARNING:**
+> This project is under development right now, and nothing might work yet.
+> Suggestions and ideas are always welcome though.
+
+
 ***Vroom*** wants to be a developing tool for multi-platform HTML5 applications (android, ios, web apps).
 
 It is a nodejs web server that will package everything at the end ready to be served with a static web server or bundled in a container like PhoneGap.
-
-
-> <font color="#f00">**WARNING:**
-> This project is under development right now, and nothing might work yet.
-> Suggestions and ideas are always welcome though.</font>
 
 
 Planned features
