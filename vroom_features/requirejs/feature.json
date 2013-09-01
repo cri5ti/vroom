@@ -1,0 +1,10 @@
+{
+    "name": "RequireJS",
+    "version": "2.1.8",
+    "main": "require.js",
+    "engines": {
+        "vroom": ">=0.0"
+    },
+    "homepage": "http://requirejs.org/",
+    "license": "MIT"
+}
